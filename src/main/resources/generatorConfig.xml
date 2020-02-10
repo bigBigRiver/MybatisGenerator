@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--数据库驱动 -->
+    <classPathEntry location="C:\\Users\\11985\\.m2\\repository\\mysql\\mysql-connector-java\\8.0.19\\mysql-connector-java-8.0.19.jar" />
+    <context id="myContext" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <!--数据库链接地址账号密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+            connectionURL="jdbc:mysql://localhost:3306/mybatis_test?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8&amp;useSSL=false"
+                        userId="root" password="root">
+            <!--使用Connector / J的8.x版，需要加这个属性，否则会生成xxxKey，xxxWithBlobs等文件-->
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!--生成实体类类存放位置 -->
+        <javaModelGenerator targetPackage="com.boot.mybatis.po"
+            targetProject="src/main/java/">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!--生成映射文件存放位置 -->
+        <sqlMapGenerator targetPackage="mapper"
+            targetProject="src/main/resources/">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!--生成Dao类存放位置 -->
+        <javaClientGenerator type="XMLMAPPER" 
+            targetPackage="com.boot.mybatis.dao" targetProject="src/main/java/">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!--生成对应表及类名-->
+		<table tableName="user" domainObjectName="User"></table>
+    </context>
+</generatorConfiguration>
